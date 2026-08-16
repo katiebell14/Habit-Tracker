@@ -1,0 +1,4957 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+
+    name="viewport"
+
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover"
+
+    >
+
+    <title>My Wellness</title>
+
+    <style>
+
+:root {
+
+        --bg: #f5f7f3;
+
+        --card: #ffffff;
+
+        --text: #27342c;
+
+        --muted: #7c877f;
+
+        --green: #71947d;
+
+        --green-dark: #526f5d;
+
+        --green-light: #e5eee7;
+
+        --cream: #faf8f1;
+
+        --border: #e1e7e1;
+
+        --red: #c87878;
+
+        --yellow: #d4a95d;
+
+        --shadow: 0 8px 28px rgba(39,52,44,.07);
+
+        --radius: 22px;
+
+    }
+
+        * {
+
+            box-sizing: border-box;
+
+            -webkit-tap-highlight-color: transparent;
+
+        }
+
+        body {
+
+            margin: 0;
+
+            background: var(--bg);
+
+            color: var(--text);
+
+            font-family:
+
+            -apple-system,
+
+            BlinkMacSystemFont,
+
+            "SF Pro Display",
+
+            "Segoe UI",
+
+            sans-serif;
+
+        }
+
+        button,
+
+        input,
+
+        textarea,
+
+        select {
+
+            font: inherit;
+
+        }
+
+        button {
+
+            cursor: pointer;
+
+        }
+
+        .app {
+
+            width: 100%;
+
+            max-width: 720px;
+
+            margin: auto;
+
+            padding:
+
+            max(18px, env(safe-area-inset-top))
+
+            16px
+
+            105px;
+
+        }
+
+        /* =========================
+
+   HEADER
+
+========================= */
+
+        .header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin: 8px 0 20px;
+
+        }
+
+        .logo-title {
+
+            font-size: 28px;
+
+            font-weight: 800;
+
+            letter-spacing: -.7px;
+
+            margin: 0;
+
+        }
+
+        .subtitle {
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+            margin-top: 3px;
+
+        }
+
+        .date-label {
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+            text-align: right;
+
+        }
+
+        /* =========================
+
+   CARDS
+
+========================= */
+
+        .card {
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+
+            padding: 18px;
+
+            margin-bottom: 14px;
+
+            box-shadow: var(--shadow);
+
+        }
+
+        .card-title {
+
+            font-weight: 750;
+
+            font-size: 16px;
+
+        }
+
+        .card-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 14px;
+
+        }
+
+        /* =========================
+
+   SCORE
+
+========================= */
+
+        .score-card {
+
+            background: var(--text);
+
+            color: white;
+
+            border-radius: var(--radius);
+
+            padding: 20px;
+
+            box-shadow: var(--shadow);
+
+            margin-bottom: 14px;
+
+        }
+
+        .score-top {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+        .score-number {
+
+            font-size: 38px;
+
+            font-weight: 800;
+
+        }
+
+        .score-label {
+
+            font-size: 11px;
+
+            opacity: .65;
+
+            letter-spacing: 1px;
+
+            font-weight: 700;
+
+        }
+
+        .score-message {
+
+            font-size: 13px;
+
+            opacity: .8;
+
+            margin-top: 2px;
+
+        }
+
+        .progress-bar {
+
+            width: 100%;
+
+            height: 9px;
+
+            background: rgba(255,255,255,.14);
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            margin-top: 15px;
+
+        }
+
+        .progress-fill {
+
+            height: 100%;
+
+            width: 0;
+
+            background: #bdd6c3;
+
+            border-radius: 20px;
+
+            transition: width .3s ease;
+
+        }
+
+        /* =========================
+
+   GRID
+
+========================= */
+
+        .grid {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 13px;
+
+        }
+
+        .big-number {
+
+            font-size: 28px;
+
+            font-weight: 800;
+
+            margin: 5px 0;
+
+        }
+
+        .icon {
+
+            font-size: 23px;
+
+            margin-right: 5px;
+
+        }
+
+        .small {
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+        }
+
+        .goal-text {
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+        }
+
+        /* =========================
+
+   BUTTONS
+
+========================= */
+
+        .btn {
+
+            border: 0;
+
+            border-radius: 12px;
+
+            padding: 9px 12px;
+
+            background: var(--green-light);
+
+            color: var(--text);
+
+            font-weight: 700;
+
+            font-size: 12px;
+
+            margin: 3px 2px;
+
+        }
+
+        .btn.primary {
+
+            background: var(--green);
+
+            color: white;
+
+        }
+
+        .btn.outline {
+
+            background: transparent;
+
+            border: 1px solid var(--border);
+
+        }
+
+        .btn.danger {
+
+            background: #f6e4e4;
+
+            color: var(--red);
+
+        }
+
+        /* =========================
+
+   INPUT
+
+========================= */
+
+        .input,
+
+        textarea,
+
+        select {
+
+            width: 100%;
+
+            border: 1px solid var(--border);
+
+            background: #fafcf9;
+
+            border-radius: 12px;
+
+            padding: 11px;
+
+            color: var(--text);
+
+            outline: none;
+
+        }
+
+        .input:focus,
+
+        textarea:focus,
+
+        select:focus {
+
+            border-color: var(--green);
+
+        }
+
+        textarea {
+
+            min-height: 70px;
+
+            resize: vertical;
+
+        }
+
+        /* =========================
+
+   ROW
+
+========================= */
+
+        .row {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+        }
+
+        .row .input {
+
+            flex: 1;
+
+        }
+
+        /* =========================
+
+   WORKOUT
+
+========================= */
+
+        .workout-option {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 9px 0;
+
+        }
+
+        .checkbox {
+
+            width: 25px;
+
+            height: 25px;
+
+            border-radius: 8px;
+
+            border: 2px solid #ccd6ce;
+
+            background: white;
+
+            display: grid;
+
+            place-items: center;
+
+            flex-shrink: 0;
+
+        }
+
+        .checkbox.checked {
+
+            background: var(--green);
+
+            border-color: var(--green);
+
+            color: white;
+
+        }
+
+        .checkbox.checked::after {
+
+            content: "✓";
+
+            font-weight: 800;
+
+        }
+
+        /* =========================
+
+   MEALS
+
+========================= */
+
+        .meal {
+
+            border-top: 1px solid var(--border);
+
+            padding: 14px 0;
+
+        }
+
+        .meal:first-child {
+
+            border-top: 0;
+
+        }
+
+        .meal-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+        .meal-name {
+
+            font-weight: 750;
+
+        }
+
+        .meal-status {
+
+            font-size: 11px;
+
+            color: var(--muted);
+
+        }
+
+        .tags {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 5px;
+
+            margin: 9px 0;
+
+        }
+
+        .tag {
+
+            background: var(--green-light);
+
+            color: var(--green-dark);
+
+            padding: 5px 8px;
+
+            border-radius: 99px;
+
+            font-size: 10px;
+
+            font-weight: 650;
+
+        }
+
+        /* =========================
+
+   STREAKS
+
+========================= */
+
+        .streak-grid {
+
+            display: grid;
+
+            grid-template-columns:
+
+            repeat(4,1fr);
+
+            gap: 8px;
+
+        }
+
+        .streak {
+
+            background: #f1f5f1;
+
+            border-radius: 15px;
+
+            text-align: center;
+
+            padding: 12px 5px;
+
+        }
+
+        .streak-icon {
+
+            font-size: 20px;
+
+        }
+
+        .streak-number {
+
+            font-size: 18px;
+
+            font-weight: 800;
+
+            margin-top: 3px;
+
+        }
+
+        .streak-name {
+
+            font-size: 10px;
+
+            color: var(--muted);
+
+        }
+
+        /* =========================
+
+   CALENDAR
+
+========================= */
+
+        .calendar-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 15px;
+
+        }
+
+        .calendar-title {
+
+            font-weight: 800;
+
+            font-size: 18px;
+
+        }
+
+        .calendar-nav {
+
+            border: 0;
+
+            background: var(--green-light);
+
+            border-radius: 10px;
+
+            width: 34px;
+
+            height: 34px;
+
+        }
+
+        .calendar-weekdays,
+
+        .calendar-grid {
+
+            display: grid;
+
+            grid-template-columns:
+
+            repeat(7,1fr);
+
+            gap: 5px;
+
+        }
+
+        .weekday {
+
+            text-align: center;
+
+            font-size: 10px;
+
+            color: var(--muted);
+
+            padding-bottom: 5px;
+
+        }
+
+        .calendar-day {
+
+            aspect-ratio: 1;
+
+            border-radius: 11px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            font-size: 12px;
+
+            position: relative;
+
+        }
+
+        .calendar-day.today {
+
+            border: 2px solid var(--green);
+
+            font-weight: 800;
+
+        }
+
+        .calendar-day.complete {
+
+            background: var(--green-light);
+
+        }
+
+        .calendar-day.partial {
+
+            background: #f5f1e6;
+
+        }
+
+        .calendar-dot {
+
+            width: 4px;
+
+            height: 4px;
+
+            border-radius: 50%;
+
+            background: var(--green);
+
+            margin-top: 2px;
+
+        }
+
+        /* =========================
+
+   STATS
+
+========================= */
+
+        .stat-grid {
+
+            display: grid;
+
+            grid-template-columns:
+
+            1fr 1fr;
+
+            gap: 10px;
+
+        }
+
+        .stat {
+
+            background: #f3f6f3;
+
+            border-radius: 16px;
+
+            padding: 14px;
+
+        }
+
+        .stat-label {
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+        }
+
+        .stat-value {
+
+            font-size: 23px;
+
+            font-weight: 800;
+
+            margin-top: 3px;
+
+        }
+
+        /* =========================
+
+   GRAPH
+
+========================= */
+
+        .chart-container {
+
+            width: 100%;
+
+            overflow: hidden;
+
+        }
+
+        canvas {
+
+            display: block;
+
+            width: 100%;
+
+            height: 230px;
+
+        }
+
+        /* =========================
+
+   SETTINGS
+
+========================= */
+
+        .setting {
+
+            margin-bottom: 18px;
+
+        }
+
+        .setting label {
+
+            display: block;
+
+            font-size: 12px;
+
+            color: var(--muted);
+
+            margin-bottom: 6px;
+
+        }
+
+        /* =========================
+
+   NAV
+
+========================= */
+
+        .bottom-nav {
+
+            position: fixed;
+
+            z-index: 20;
+
+            bottom: 0;
+
+            left: 0;
+
+            right: 0;
+
+            background:
+
+            rgba(255,255,255,.94);
+
+            backdrop-filter: blur(18px);
+
+            border-top:
+
+            1px solid var(--border);
+
+            padding:
+
+            9px
+
+            max(16px, calc((100vw - 720px)/2))
+
+            max(9px, env(safe-area-inset-bottom));
+
+            display: flex;
+
+            justify-content: space-around;
+
+        }
+
+        .nav-button {
+
+            border: 0;
+
+            background: transparent;
+
+            color: var(--muted);
+
+            font-size: 10px;
+
+            text-align: center;
+
+            padding: 3px 15px;
+
+        }
+
+        .nav-icon {
+
+            display: block;
+
+            font-size: 21px;
+
+            margin-bottom: 2px;
+
+        }
+
+        .nav-button.active {
+
+            color: var(--green-dark);
+
+            font-weight: 800;
+
+        }
+
+        /* =========================
+
+   VIEWS
+
+========================= */
+
+        .view {
+
+            display: none;
+
+        }
+
+        .view.active {
+
+            display: block;
+
+        }
+
+        /* =========================
+
+   TOAST
+
+========================= */
+
+        .toast {
+
+            position: fixed;
+
+            z-index: 100;
+
+            left: 50%;
+
+            bottom: 85px;
+
+            transform:
+
+            translateX(-50%)
+
+            translateY(15px);
+
+            background: var(--text);
+
+            color: white;
+
+            padding: 10px 16px;
+
+            border-radius: 99px;
+
+            font-size: 12px;
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            transition: .25s;
+
+        }
+
+        .toast.show {
+
+            opacity: 1;
+
+            transform:
+
+            translateX(-50%)
+
+            translateY(0);
+
+        }
+
+        /* =========================
+
+   MOBILE
+
+========================= */
+
+        @media(max-width:480px) {
+
+            .grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .app {
+
+                padding-left: 13px;
+
+                padding-right: 13px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- ======================================================
+
+             TODAY
+
+        ======================================================= -->
+
+        <section
+
+            id="todayView"
+
+            class="view active"
+
+            >
+
+            <header class="header">
+
+                <div>
+
+                    <h1 class="logo-title">
+
+                        My Wellness
+
+                    </h1>
+
+                    <div class="subtitle">
+
+                        Small habits. Better days.
+
+                    </div>
+
+                </div>
+
+                <div
+
+                    class="date-label"
+
+                    id="todayDate"
+
+                    ></div>
+
+            </header>
+
+            <!-- SCORE -->
+
+            <div class="score-card">
+
+                <div class="score-top">
+
+                    <div>
+
+                        <div class="score-label">
+
+                            TODAY'S WELLNESS SCORE
+
+                        </div>
+
+                        <div class="score-number">
+
+                            <span id="todayScore">
+
+                                0
+
+                            </span>%
+
+                        </div>
+
+                        <div
+
+                            class="score-message"
+
+                            id="scoreMessage"
+
+                            >
+
+                            Let's get started.
+
+                        </div>
+
+                    </div>
+
+                    <div
+
+                        style="font-size:35px"
+
+                        id="scoreEmoji"
+
+                        >
+
+                        🌱
+
+                    </div>
+
+                </div>
+
+                <div class="progress-bar">
+
+                    <div
+
+                        class="progress-fill"
+
+                        id="todayProgress"
+
+                        ></div>
+
+                </div>
+
+            </div>
+
+            <!-- DAILY HABITS -->
+
+            <div class="grid">
+
+                <!-- WATER -->
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <div class="card-title">
+
+                            <span class="icon">
+
+                                💧
+
+                            </span>
+
+                            Water
+
+                        </div>
+
+                        <div class="goal-text">
+
+                            Goal
+
+                            <span id="waterGoalLabel">
+
+                                2.5
+
+                            </span>L
+
+                        </div>
+
+                    </div>
+
+                    <div class="big-number">
+
+                        <span id="waterAmount">
+
+                            0
+
+                        </span>L
+
+                    </div>
+
+                    <div
+
+                        class="small"
+
+                        id="waterRemaining"
+
+                        >
+
+                        2.5 L remaining
+
+                    </div>
+
+                    <div style="margin-top:10px">
+
+                        <button
+
+                            class="btn"
+
+                            onclick="addWater(.25)"
+
+                            >
+
+                            +250 mL
+
+                        </button>
+
+                        <button
+
+                            class="btn"
+
+                            onclick="addWater(.5)"
+
+                            >
+
+                            +500 mL
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- WEEKLY WEIGHT -->
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <div class="card-title">
+
+                            <span class="icon">
+
+                                ⚖️
+
+                            </span>
+
+                            Weekly weight
+
+                        </div>
+
+                        <div class="goal-text">
+
+                            Once weekly
+
+                        </div>
+
+                    </div>
+
+                    <div
+
+                        class="small"
+
+                        style="margin-bottom:8px"
+
+                        >
+
+                        Weigh-in day:
+
+                        <strong id="weighDayLabel">
+
+                            Sunday
+
+                        </strong>
+
+                    </div>
+
+                    <div class="row">
+
+                        <input
+
+                        id="weightInput"
+
+                        class="input"
+
+                        type="number"
+
+                        step=".1"
+
+                        placeholder="lbs"
+
+                        >
+
+                        <button
+
+                            class="btn primary"
+
+                            onclick="saveWeight()"
+
+                            >
+
+                            Save
+
+                        </button>
+
+                    </div>
+
+                    <div
+
+                        class="small"
+
+                        id="weightStatus"
+
+                        style="margin-top:9px"
+
+                        >
+
+                        No weigh-in this week
+
+                    </div>
+
+                </div>
+
+                <!-- SLEEP -->
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <div class="card-title">
+
+                            <span class="icon">
+
+                                😴
+
+                            </span>
+
+                            Sleep
+
+                        </div>
+
+                        <div class="goal-text">
+
+                            Goal
+
+                            <span id="sleepGoalLabel">
+
+                                6
+
+                            </span>h
+
+                        </div>
+
+                    </div>
+
+                    <div class="big-number">
+
+                        <span id="sleepAmount">
+
+                            0
+
+                        </span>h
+
+                    </div>
+
+                    <button
+
+                        class="btn"
+
+                        onclick="adjustSleep(.5)"
+
+                        >
+
+                        +30 min
+
+                    </button>
+
+                    <button
+
+                        class="btn"
+
+                        onclick="adjustSleep(-.5)"
+
+                        >
+
+                        −30 min
+
+                    </button>
+
+                </div>
+
+                <!-- WORKOUT -->
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <div class="card-title">
+
+                            <span class="icon">
+
+                                🏋️
+
+                            </span>
+
+                            Workout
+
+                        </div>
+
+                        <div class="goal-text">
+
+                            Today
+
+                        </div>
+
+                    </div>
+
+                    <div
+
+                        class="small"
+
+                        style="margin-bottom:8px"
+
+                        >
+
+                        Log your workout below.
+
+                    </div>
+
+                    <button
+
+                        id="workoutCompleteButton"
+
+                        class="btn"
+
+                        onclick="toggleWorkoutComplete()"
+
+                        >
+
+                        ○ Complete workout
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- WORKOUT DETAILS -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div class="card-title">
+
+                        🏋️ Workout details
+
+                    </div>
+
+                    <div class="small">
+
+                        Optional
+
+                    </div>
+
+                </div>
+
+                <select
+
+                    id="workoutType"
+
+                    class="input"
+
+                    onchange="saveWorkoutDetails()"
+
+                    >
+
+                    <option value="">
+
+                        Workout type
+
+                    </option>
+
+                    <option>
+
+                        Strength
+
+                    </option>
+
+                    <option>
+
+                        Lower body
+
+                    </option>
+
+                    <option>
+
+                        Upper body
+
+                    </option>
+
+                    <option>
+
+                        Glutes
+
+                    </option>
+
+                    <option>
+
+                        Cardio
+
+                    </option>
+
+                    <option>
+
+                        Walking
+
+                    </option>
+
+                    <option>
+
+                        Mobility
+
+                    </option>
+
+                    <option>
+
+                        Other
+
+                    </option>
+
+                </select>
+
+                <div
+
+                    class="row"
+
+                    style="margin-top:9px"
+
+                    >
+
+                    <input
+
+                    id="workoutDuration"
+
+                    class="input"
+
+                    type="number"
+
+                    placeholder="Minutes"
+
+                    onchange="saveWorkoutDetails()"
+
+                    >
+
+                    <input
+
+                    id="workoutExercises"
+
+                    class="input"
+
+                    placeholder="Exercises"
+
+                    onchange="saveWorkoutDetails()"
+
+                    >
+
+                </div>
+
+            </div>
+
+            <!-- MEALS -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div class="card-title">
+
+                        🥗 Nutrient-dense meals
+
+                    </div>
+
+                    <div class="small">
+
+                        <span id="mealCount">
+
+                            0
+
+                        </span>/3
+
+                    </div>
+
+                </div>
+
+                <div id="mealContainer"></div>
+
+            </div>
+
+            <!-- STREAKS -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div class="card-title">
+
+                        🔥 Your streaks
+
+                    </div>
+
+                    <div class="small">
+
+                        Keep going
+
+                    </div>
+
+                </div>
+
+                <div class="streak-grid">
+
+                    <div class="streak">
+
+                        <div class="streak-icon">
+
+                            💧
+
+                        </div>
+
+                        <div
+
+                            class="streak-number"
+
+                            id="waterStreak"
+
+                            >
+
+                            0
+
+                        </div>
+
+                        <div class="streak-name">
+
+                            Water
+
+                        </div>
+
+                    </div>
+
+                    <div class="streak">
+
+                        <div class="streak-icon">
+
+                            😴
+
+                        </div>
+
+                        <div
+
+                            class="streak-number"
+
+                            id="sleepStreak"
+
+                            >
+
+                            0
+
+                        </div>
+
+                        <div class="streak-name">
+
+                            Sleep
+
+                        </div>
+
+                    </div>
+
+                    <div class="streak">
+
+                        <div class="streak-icon">
+
+                            🏋️
+
+                        </div>
+
+                        <div
+
+                            class="streak-number"
+
+                            id="workoutStreak"
+
+                            >
+
+                            0
+
+                        </div>
+
+                        <div class="streak-name">
+
+                            Workout
+
+                        </div>
+
+                    </div>
+
+                    <div class="streak">
+
+                        <div class="streak-icon">
+
+                            🥗
+
+                        </div>
+
+                        <div
+
+                            class="streak-number"
+
+                            id="mealStreak"
+
+                            >
+
+                            0
+
+                        </div>
+
+                        <div class="streak-name">
+
+                            Meals
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ======================================================
+
+             PROGRESS
+
+        ======================================================= -->
+
+        <section
+
+            id="progressView"
+
+            class="view"
+
+            >
+
+            <header class="header">
+
+                <div>
+
+                    <h1 class="logo-title">
+
+                        Progress
+
+                    </h1>
+
+                    <div class="subtitle">
+
+                        Your consistency at a glance
+
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- WEEKLY SCORE -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div class="card-title">
+
+                        ⭐ Weekly score
+
+                    </div>
+
+                    <div class="small">
+
+                        Last 7 days
+
+                    </div>
+
+                </div>
+
+                <div style="text-align:center">
+
+                    <div
+
+                        id="weeklyScore"
+
+                        style="
+
+                        font-size:48px;
+
+                        font-weight:800
+
+                        "
+
+                        >
+
+                        0%
+
+                    </div>
+
+                    <div
+
+                        class="small"
+
+                        id="weeklyMessage"
+
+                        >
+
+                        Keep building your routine.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- STATS -->
+
+            <div class="stat-grid">
+
+                <div class="stat">
+
+                    <div class="stat-label">
+
+                        💧 Water goals
+
+                    </div>
+
+                    <div
+
+                        class="stat-value"
+
+                        id="weekWater"
+
+                        >
+
+                        0/7
+
+                    </div>
+
+                </div>
+
+                <div class="stat">
+
+                    <div class="stat-label">
+
+                        😴 6+ hour nights
+
+                    </div>
+
+                    <div
+
+                        class="stat-value"
+
+                        id="weekSleep"
+
+                        >
+
+                        0/7
+
+                    </div>
+
+                </div>
+
+                <div class="stat">
+
+                    <div class="stat-label">
+
+                        🏋️ Workouts
+
+                    </div>
+
+                    <div
+
+                        class="stat-value"
+
+                        id="weekWorkouts"
+
+                        >
+
+                        0
+
+                    </div>
+
+                </div>
+
+                <div class="stat">
+
+                    <div class="stat-label">
+
+                        🥗 Complete meal days
+
+                    </div>
+
+                    <div
+
+                        class="stat-value"
+
+                        id="weekMeals"
+
+                        >
+
+                        0/7
+
+                    </div>
+
+                </div>
+
+                <div class="stat">
+
+                    <div class="stat-label">
+
+                        ⚖️ Weekly weigh-in
+
+                    </div>
+
+                    <div
+
+                        class="stat-value"
+
+                        id="weekWeight"
+
+                        >
+
+                        —
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- WEIGHT GRAPH -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div class="card-title">
+
+                        ⚖️ Weight trend
+
+                    </div>
+
+                    <div class="small">
+
+                        Weekly
+
+                    </div>
+
+                </div>
+
+                <div class="chart-container">
+
+                    <canvas
+
+                        id="weightChart"
+
+                        ></canvas>
+
+                </div>
+
+                <div
+
+                    class="small"
+
+                    style="margin-top:8px"
+
+                    >
+
+                    Your trend is more useful than any single weigh-in.
+
+                </div>
+
+            </div>
+
+            <!-- CALENDAR -->
+
+            <div class="card">
+
+                <div class="calendar-header">
+
+                    <button
+
+                        class="calendar-nav"
+
+                        onclick="changeMonth(-1)"
+
+                        >
+
+                        ‹
+
+                    </button>
+
+                    <div
+
+                        class="calendar-title"
+
+                        id="calendarMonth"
+
+                        ></div>
+
+                    <button
+
+                        class="calendar-nav"
+
+                        onclick="changeMonth(1)"
+
+                        >
+
+                        ›
+
+                    </button>
+
+                </div>
+
+                <div class="calendar-weekdays">
+
+                    <div class="weekday">
+                        S
+                    </div>
+
+                    <div class="weekday">
+                        M
+                    </div>
+
+                    <div class="weekday">
+                        T
+                    </div>
+
+                    <div class="weekday">
+                        W
+                    </div>
+
+                    <div class="weekday">
+                        T
+                    </div>
+
+                    <div class="weekday">
+                        F
+                    </div>
+
+                    <div class="weekday">
+                        S
+                    </div>
+
+                </div>
+
+                <div
+
+                    class="calendar-grid"
+
+                    id="calendarGrid"
+
+                    ></div>
+
+                <div
+
+                    class="small"
+
+                    style="margin-top:12px"
+
+                    >
+
+                    <span style="color:#71947d">
+
+                        ●
+
+                    </span>
+
+                    strong day
+
+                    &nbsp;&nbsp;
+
+                    <span style="color:#d4a95d">
+
+                        ●
+
+                    </span>
+
+                    partial day
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ======================================================
+
+             GOALS
+
+        ======================================================= -->
+
+        <section
+
+            id="settingsView"
+
+            class="view"
+
+            >
+
+            <header class="header">
+
+                <div>
+
+                    <h1 class="logo-title">
+
+                        Goals
+
+                    </h1>
+
+                    <div class="subtitle">
+
+                        Customize your wellness targets
+
+                    </div>
+
+                </div>
+
+            </header>
+
+            <div class="card">
+
+                <div class="setting">
+
+                    <label>
+
+                        Daily water goal — litres
+
+                    </label>
+
+                    <input
+
+                    id="waterGoalInput"
+
+                    class="input"
+
+                    type="number"
+
+                    step=".1"
+
+                    min=".1"
+
+                    >
+
+                </div>
+
+                <div class="setting">
+
+                    <label>
+
+                        Daily sleep goal — hours
+
+                    </label>
+
+                    <input
+
+                    id="sleepGoalInput"
+
+                    class="input"
+
+                    type="number"
+
+                    step=".5"
+
+                    min="1"
+
+                    >
+
+                </div>
+
+                <div class="setting">
+
+                    <label>
+
+                        Weekly weigh-in day
+
+                    </label>
+
+                    <select
+
+                        id="weighDayInput"
+
+                        class="input"
+
+                        >
+
+                        <option value="0">
+
+                            Sunday
+
+                        </option>
+
+                        <option value="1">
+
+                            Monday
+
+                        </option>
+
+                        <option value="2">
+
+                            Tuesday
+
+                        </option>
+
+                        <option value="3">
+
+                            Wednesday
+
+                        </option>
+
+                        <option value="4">
+
+                            Thursday
+
+                        </option>
+
+                        <option value="5">
+
+                            Friday
+
+                        </option>
+
+                        <option value="6">
+
+                            Saturday
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button
+
+                    class="btn primary"
+
+                    onclick="saveGoals()"
+
+                    >
+
+                    Save goals
+
+                </button>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-title">
+
+                    📱 Your data
+
+                </div>
+
+                <p class="small">
+
+                    Your tracker data is stored locally
+
+                    in your browser.
+
+                    Nothing is sent to a server.
+
+                </p>
+
+                <button
+
+                    class="btn outline"
+
+                    onclick="exportData()"
+
+                    >
+
+                    Export my data
+
+                </button>
+
+                <button
+
+                    class="btn danger"
+
+                    onclick="resetAllData()"
+
+                    >
+
+                    Delete all data
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- ======================================================
+
+         NAVIGATION
+
+    ======================================================= -->
+
+    <nav class="bottom-nav">
+
+        <button
+
+            class="nav-button active"
+
+            onclick="
+
+            showView('todayView',this)
+
+            "
+
+            >
+
+            <span class="nav-icon">
+
+                🏠
+
+            </span>
+
+            Today
+
+        </button>
+
+        <button
+
+            class="nav-button"
+
+            onclick="
+
+            showView('progressView',this);
+
+            renderProgress()
+
+            "
+
+            >
+
+            <span class="nav-icon">
+
+                📊
+
+            </span>
+
+            Progress
+
+        </button>
+
+        <button
+
+            class="nav-button"
+
+            onclick="
+
+            showView('settingsView',this);
+
+            loadGoals()
+
+            "
+
+            >
+
+            <span class="nav-icon">
+
+                ⚙️
+
+            </span>
+
+            Goals
+
+        </button>
+
+    </nav>
+
+    <div
+
+        id="toast"
+
+        class="toast"
+
+        ></div>
+
+    <script>
+
+        /* ======================================================
+
+   STORAGE
+
+====================================================== */
+
+        const STORAGE_KEY =
+
+        "my_wellness_tracker_weekly_weight";
+
+        let state =
+
+        JSON.parse(
+
+            localStorage.getItem(
+
+                STORAGE_KEY
+
+            ) || "null"
+
+        );
+
+        if (!state) {
+
+            state = {
+
+                goals: {
+
+                    water: 2.5,
+
+                    sleep: 6,
+
+                    weighDay: 0
+
+                },
+
+                days: {},
+
+                weights: []
+
+            };
+
+        }
+
+        /* ======================================================
+
+   DATE
+
+====================================================== */
+
+        function dateKey(
+
+            date = new Date()
+
+        ) {
+
+            const y =
+
+            date.getFullYear();
+
+            const m =
+
+            String(
+
+                date.getMonth()+1
+
+            ).padStart(2, "0");
+
+            const d =
+
+            String(
+
+                date.getDate()
+
+            ).padStart(2, "0");
+
+            return `${y}-${m}-${d}`;
+
+        }
+
+        function getDay(
+
+            key = dateKey()
+
+        ) {
+
+            if (!state.days[key]) {
+
+                state.days[key] = {
+
+                    water: 0,
+
+                    sleep: 0,
+
+                    workout: {
+
+                        complete: false,
+
+                        type: "",
+
+                        duration: "",
+
+                        exercises: ""
+
+                    },
+
+                    meals: {
+
+                        breakfast: {
+
+                            complete: false,
+
+                            note: ""
+
+                        },
+
+                        lunch: {
+
+                            complete: false,
+
+                            note: ""
+
+                        },
+
+                        dinner: {
+
+                            complete: false,
+
+                            note: ""
+
+                        }
+
+                    }
+
+                };
+
+            }
+
+            return state.days[key];
+
+        }
+
+        function saveState() {
+
+            localStorage.setItem(
+
+                STORAGE_KEY,
+
+                JSON.stringify(state)
+
+            );
+
+        }
+
+        /* ======================================================
+
+   WEEKLY WEIGHT HELPERS
+
+====================================================== */
+
+        function getWeekStart(
+
+            date = new Date()
+
+        ) {
+
+            const d =
+
+            new Date(date);
+
+            const day =
+
+            d.getDay();
+
+            const difference =
+
+            day === 0
+
+            ? 0: -day;
+
+            d.setDate(
+
+                d.getDate() + difference
+
+            );
+
+            d.setHours(
+
+                0, 0, 0, 0
+
+            );
+
+            return d;
+
+        }
+
+        function getCurrentWeekWeight() {
+
+            const start =
+
+            getWeekStart();
+
+            const end =
+
+            new Date(start);
+
+            end.setDate(
+
+                end.getDate()+6
+
+            );
+
+            const weights =
+
+            state.weights || [];
+
+            return weights.find(
+
+                item => {
+
+                    const date =
+
+                    new Date(
+
+                        item.date
+
+                    );
+
+                    return (
+
+                        date >= start &&
+
+                        date <= end
+
+                    );
+
+                }
+
+            );
+
+        }
+
+        function isWeighDay() {
+
+            return (
+
+                new Date().getDay() ===
+
+                Number(
+
+                    state.goals.weighDay
+
+                )
+
+            );
+
+        }
+
+        /* ======================================================
+
+   TODAY RENDER
+
+====================================================== */
+
+        function renderToday() {
+
+            const d =
+
+            getDay();
+
+            document.getElementById(
+
+                "todayDate"
+
+            ).textContent =
+
+            new Date().toLocaleDateString(
+
+                undefined,
+
+                {
+
+                    weekday: "short",
+
+                    month: "short",
+
+                    day: "numeric"
+
+                }
+
+            );
+
+            /* WATER */
+
+            document.getElementById(
+
+                "waterAmount"
+
+            ).textContent =
+
+            d.water.toFixed(2);
+
+            document.getElementById(
+
+                "waterGoalLabel"
+
+            ).textContent =
+
+            state.goals.water;
+
+            const remaining =
+
+            Math.max(
+
+                0,
+
+                state.goals.water -
+
+                d.water
+
+            );
+
+            document.getElementById(
+
+                "waterRemaining"
+
+            ).textContent =
+
+            remaining.toFixed(2)
+
+            + " L remaining";
+
+            /* SLEEP */
+
+            document.getElementById(
+
+                "sleepAmount"
+
+            ).textContent =
+
+            d.sleep.toFixed(1);
+
+            document.getElementById(
+
+                "sleepGoalLabel"
+
+            ).textContent =
+
+            state.goals.sleep;
+
+            /* WEEKLY WEIGHT */
+
+            const currentWeight =
+
+            getCurrentWeekWeight();
+
+            document.getElementById(
+
+                "weighDayLabel"
+
+            ).textContent =
+
+            getDayName(
+
+                state.goals.weighDay
+
+            );
+
+            const weightInput =
+
+            document.getElementById(
+
+                "weightInput"
+
+            );
+
+            weightInput.value =
+
+            currentWeight
+
+            ? currentWeight.weight: "";
+
+            if (currentWeight) {
+
+                document.getElementById(
+
+                    "weightStatus"
+
+                ).textContent =
+
+                "This week's weigh-in: "
+
+                + currentWeight.weight
+
+                + " lb ✓";
+
+            } else {
+
+                document.getElementById(
+
+                    "weightStatus"
+
+                ).textContent =
+
+                isWeighDay()
+
+                ? "Today's your weigh-in day.": "No weigh-in logged this week.";
+
+            }
+
+            /* WORKOUT */
+
+            const workoutButton =
+
+            document.getElementById(
+
+                "workoutCompleteButton"
+
+            );
+
+            if (d.workout.complete) {
+
+                workoutButton.textContent =
+
+                "✓ Workout completed";
+
+                workoutButton.className =
+
+                "btn primary";
+
+            } else {
+
+                workoutButton.textContent =
+
+                "○ Complete workout";
+
+                workoutButton.className =
+
+                "btn";
+
+            }
+
+            document.getElementById(
+
+                "workoutType"
+
+            ).value =
+
+            d.workout.type;
+
+            document.getElementById(
+
+                "workoutDuration"
+
+            ).value =
+
+            d.workout.duration;
+
+            document.getElementById(
+
+                "workoutExercises"
+
+            ).value =
+
+            d.workout.exercises;
+
+            renderMeals();
+
+            updateScore();
+
+            renderStreaks();
+
+        }
+
+        /* ======================================================
+
+   WATER
+
+====================================================== */
+
+        function addWater(
+
+            amount
+
+        ) {
+
+            const d =
+
+            getDay();
+
+            d.water =
+
+            Math.max(
+
+                0,
+
+                d.water + amount
+
+            );
+
+            saveState();
+
+            renderToday();
+
+            showToast(
+
+                "Water added 💧"
+
+            );
+
+        }
+
+        /* ======================================================
+
+   SLEEP
+
+====================================================== */
+
+        function adjustSleep(
+
+            amount
+
+        ) {
+
+            const d =
+
+            getDay();
+
+            d.sleep =
+
+            Math.max(
+
+                0,
+
+                Math.min(
+
+                    24,
+
+                    d.sleep + amount
+
+                )
+
+            );
+
+            saveState();
+
+            renderToday();
+
+        }
+
+        /* ======================================================
+
+   WEEKLY WEIGHT
+
+====================================================== */
+
+        function saveWeight() {
+
+            const input =
+
+            document.getElementById(
+
+                "weightInput"
+
+            );
+
+            const value =
+
+            parseFloat(
+
+                input.value
+
+            );
+
+            if (isNaN(value)) {
+
+                showToast(
+
+                    "Enter your weight first"
+
+                );
+
+                return;
+
+            }
+
+            if (!state.weights)
+
+                state.weights = [];
+
+            const weekStart =
+
+            getWeekStart();
+
+            const existing =
+
+            state.weights.find(
+
+                item =>
+
+                item.weekStart ===
+
+                dateKey(weekStart)
+
+            );
+
+            if (existing) {
+
+                existing.weight =
+
+                value;
+
+                existing.date =
+
+                dateKey();
+
+            } else {
+
+                state.weights.push({
+
+                    weekStart:
+
+                    dateKey(weekStart),
+
+                    date:
+
+                    dateKey(),
+
+                    weight:
+
+                    value
+
+                });
+
+            }
+
+            saveState();
+
+            renderToday();
+
+            showToast(
+
+                "Weekly weight saved ⚖️"
+
+            );
+
+        }
+
+        /* ======================================================
+
+   WORKOUT
+
+====================================================== */
+
+        function toggleWorkoutComplete() {
+
+            const d =
+
+            getDay();
+
+            d.workout.complete =
+
+            !d.workout.complete;
+
+            saveState();
+
+            renderToday();
+
+        }
+
+        function saveWorkoutDetails() {
+
+            const d =
+
+            getDay();
+
+            d.workout.type =
+
+            document.getElementById(
+
+                "workoutType"
+
+            ).value;
+
+            d.workout.duration =
+
+            document.getElementById(
+
+                "workoutDuration"
+
+            ).value;
+
+            d.workout.exercises =
+
+            document.getElementById(
+
+                "workoutExercises"
+
+            ).value;
+
+            saveState();
+
+        }
+
+        /* ======================================================
+
+   MEALS
+
+====================================================== */
+
+        const meals = [{
+
+            key: "breakfast",
+
+            name: "Breakfast"
+
+        },
+
+            {
+
+                key: "lunch",
+
+                name: "Lunch"
+
+            },
+
+            {
+
+                key: "dinner",
+
+                name: "Dinner"
+
+            }];
+
+        function renderMeals() {
+
+            const d =
+
+            getDay();
+
+            document.getElementById(
+
+                "mealContainer"
+
+            ).innerHTML =
+
+            meals.map(
+
+                meal => {
+
+                    const item =
+
+                    d.meals[
+
+                        meal.key
+
+                    ];
+
+                    return `
+
+                    <div class="meal">
+
+                    <div class="meal-header">
+
+                    <div>
+
+                    <div class="meal-name">
+
+                    ${meal.name}
+
+                    </div>
+
+                    <div class="meal-status">
+
+                    ${
+
+                    item.complete
+
+                    ? "Completed ✓": "Not logged"
+
+                    }
+
+                    </div>
+
+                    </div>
+
+                    <button
+
+                    class="
+
+                    checkbox
+
+                    ${
+
+                    item.complete
+
+                    ? "checked": ""
+
+                    }
+
+                    "
+
+                    onclick="
+
+                    toggleMeal(
+
+                    '${meal.key}'
+
+                    )
+
+                    "
+
+                    ></button>
+
+                    </div>
+
+                    <div class="tags">
+
+                    <span class="tag">
+
+                    Protein
+
+                    </span>
+
+                    <span class="tag">
+
+                    Fruit / vegetables
+
+                    </span>
+
+                    <span class="tag">
+
+                    Whole-food carbs
+
+                    </span>
+
+                    <span class="tag">
+
+                    Healthy fats
+
+                    </span>
+
+                    </div>
+
+                    <textarea
+
+                    placeholder="
+
+                    What did you eat?
+
+                    Add a note...
+
+                    "
+
+                    onchange="
+
+                    saveMealNote(
+
+                    '${meal.key}',
+
+                    this.value
+
+                    )
+
+                    "
+
+                    >${escapeHtml(
+
+                        item.note
+
+                    )}</textarea>
+
+                    </div>
+
+                    `;
+
+                }
+
+            ).join("");
+
+            document.getElementById(
+
+                "mealCount"
+
+            ).textContent =
+
+            meals.filter(
+
+                meal =>
+
+                d.meals[
+
+                    meal.key
+
+                ].complete
+
+            ).length;
+
+        }
+
+        function toggleMeal(
+
+            key
+
+        ) {
+
+            const d =
+
+            getDay();
+
+            d.meals[key].complete =
+
+            !d.meals[key].complete;
+
+            saveState();
+
+            renderToday();
+
+        }
+
+        function saveMealNote(
+
+            key,
+
+            value
+
+        ) {
+
+            getDay()
+
+            .meals[key]
+
+            .note =
+
+            value;
+
+            saveState();
+
+        }
+
+        function escapeHtml(
+
+            text
+
+        ) {
+
+            return String(
+
+                text || ""
+
+            )
+
+            .replaceAll(
+
+                "&",
+
+                "&amp;"
+
+            )
+
+            .replaceAll(
+
+                "<",
+
+                "&lt;"
+
+            )
+
+            .replaceAll(
+
+                ">",
+
+                "&gt;"
+
+            )
+
+            .replaceAll(
+
+                '"',
+
+                "&quot;"
+
+            )
+
+            .replaceAll(
+
+                "'",
+
+                "&#039;"
+
+            );
+
+        }
+
+        /* ======================================================
+
+   DAILY SCORE
+
+======================================================
+
+   Weight intentionally NOT included.
+
+   Water       25%
+
+   Sleep       25%
+
+   Workout     25%
+
+   Meals       25%
+
+====================================================== */
+
+        function calculateDayScore(
+
+            d
+
+        ) {
+
+            let score = 0;
+
+            if (
+
+                d.water >=
+
+                state.goals.water
+
+            )
+
+                score += 25;
+
+            if (
+
+                d.sleep >=
+
+                state.goals.sleep
+
+            )
+
+                score += 25;
+
+            if (
+
+                d.workout.complete
+
+            )
+
+                score += 25;
+
+            const mealCount =
+
+            Object.values(
+
+                d.meals
+
+            ).filter(
+
+                m => m.complete
+
+            ).length;
+
+            score +=
+
+            Math.round(
+
+                mealCount /
+
+                3 *
+
+                25
+
+            );
+
+            return score;
+
+        }
+
+        function updateScore() {
+
+            const score =
+
+            calculateDayScore(
+
+                getDay()
+
+            );
+
+            document.getElementById(
+
+                "todayScore"
+
+            ).textContent =
+
+            score;
+
+            document.getElementById(
+
+                "todayProgress"
+
+            ).style.width =
+
+            score + "%";
+
+            let message =
+
+            "Let's get started.";
+
+            let emoji =
+
+            "🌱";
+
+            if (score >= 90) {
+
+                message =
+
+                "Amazing consistency today.";
+
+                emoji =
+
+                "🌟";
+
+            } else if (score >= 70) {
+
+                message =
+
+                "You're having a strong day.";
+
+                emoji =
+
+                "💚";
+
+            } else if (score >= 40) {
+
+                message =
+
+                "You're building momentum.";
+
+                emoji =
+
+                "🌿";
+
+            }
+
+            document.getElementById(
+
+                "scoreMessage"
+
+            ).textContent =
+
+            message;
+
+            document.getElementById(
+
+                "scoreEmoji"
+
+            ).textContent =
+
+            emoji;
+
+        }
+
+        /* ======================================================
+
+   STREAKS
+
+====================================================== */
+
+        function calculateStreak(
+
+            test
+
+        ) {
+
+            let streak = 0;
+
+            const date =
+
+            new Date();
+
+            while (true) {
+
+                const d =
+
+                state.days[
+
+                    dateKey(date)
+
+                ];
+
+                if (
+
+                    !d ||
+
+                    !test(d)
+
+                )
+
+                    break;
+
+                streak++;
+
+                date.setDate(
+
+                    date.getDate() - 1
+
+                );
+
+            }
+
+            return streak;
+
+        }
+
+        function renderStreaks() {
+
+            document.getElementById(
+
+                "waterStreak"
+
+            ).textContent =
+
+            calculateStreak(
+
+                d =>
+
+                d.water >=
+
+                state.goals.water
+
+            );
+
+            document.getElementById(
+
+                "sleepStreak"
+
+            ).textContent =
+
+            calculateStreak(
+
+                d =>
+
+                d.sleep >=
+
+                state.goals.sleep
+
+            );
+
+            document.getElementById(
+
+                "workoutStreak"
+
+            ).textContent =
+
+            calculateStreak(
+
+                d =>
+
+                d.workout.complete
+
+            );
+
+            document.getElementById(
+
+                "mealStreak"
+
+            ).textContent =
+
+            calculateStreak(
+
+                d =>
+
+                Object.values(
+
+                    d.meals
+
+                ).every(
+
+                    m => m.complete
+
+                )
+
+            );
+
+        }
+
+        /* ======================================================
+
+   PROGRESS
+
+====================================================== */
+
+        function getLastDays(
+
+            number
+
+        ) {
+
+            const result = [];
+
+            for (
+
+                let i = number - 1;
+
+                i >= 0;
+
+                i--
+
+            ) {
+
+                const date =
+
+                new Date();
+
+                date.setDate(
+
+                    date.getDate() - i
+
+                );
+
+                const key =
+
+                dateKey(date);
+
+                result.push({
+
+                    date,
+
+                    key,
+
+                    data:
+
+                    state.days[key] || null
+
+                });
+
+            }
+
+            return result;
+
+        }
+
+        function renderProgress() {
+
+            const days =
+
+            getLastDays(7);
+
+            const scores =
+
+            days.map(
+
+                x =>
+
+                x.data
+
+                ? calculateDayScore(
+
+                    x.data
+
+                ): 0
+
+            );
+
+            const average =
+
+            Math.round(
+
+                scores.reduce(
+
+                    (a, b) => a+b,
+
+                    0
+
+                ) / 7
+
+            );
+
+            document.getElementById(
+
+                "weeklyScore"
+
+            ).textContent =
+
+            average + "%";
+
+            document.getElementById(
+
+                "weeklyMessage"
+
+            ).textContent =
+
+            average >= 85
+
+            ? "Excellent week. 🌟": average >= 65
+
+            ? "You're building great consistency.": "Keep taking it one day at a time.";
+
+            document.getElementById(
+
+                "weekWater"
+
+            ).textContent =
+
+            days.filter(
+
+                x =>
+
+                x.data &&
+
+                x.data.water >=
+
+                state.goals.water
+
+            ).length
+
+            + "/7";
+
+            document.getElementById(
+
+                "weekSleep"
+
+            ).textContent =
+
+            days.filter(
+
+                x =>
+
+                x.data &&
+
+                x.data.sleep >=
+
+                state.goals.sleep
+
+            ).length
+
+            + "/7";
+
+            document.getElementById(
+
+                "weekWorkouts"
+
+            ).textContent =
+
+            days.filter(
+
+                x =>
+
+                x.data &&
+
+                x.data.workout.complete
+
+            ).length;
+
+            document.getElementById(
+
+                "weekMeals"
+
+            ).textContent =
+
+            days.filter(
+
+                x =>
+
+                x.data &&
+
+                Object.values(
+
+                    x.data.meals
+
+                ).every(
+
+                    m => m.complete
+
+                )
+
+            ).length
+
+            + "/7";
+
+            const weight =
+
+            getCurrentWeekWeight();
+
+            document.getElementById(
+
+                "weekWeight"
+
+            ).textContent =
+
+            weight
+
+            ? "✓": "—";
+
+            drawWeightChart();
+
+            renderCalendar();
+
+        }
+
+        /* ======================================================
+
+   WEIGHT GRAPH
+
+====================================================== */
+
+        function drawWeightChart() {
+
+            const canvas =
+
+            document.getElementById(
+
+                "weightChart"
+
+            );
+
+            const rect =
+
+            canvas.getBoundingClientRect();
+
+            const ratio =
+
+            window.devicePixelRatio || 1;
+
+            canvas.width =
+
+            rect.width * ratio;
+
+            canvas.height =
+
+            230 * ratio;
+
+            const ctx =
+
+            canvas.getContext("2d");
+
+            ctx.scale(
+
+                ratio,
+
+                ratio
+
+            );
+
+            const width =
+
+            rect.width;
+
+            const height =
+
+            230;
+
+            ctx.clearRect(
+
+                0,
+
+                0,
+
+                width,
+
+                height
+
+            );
+
+            const weights =
+
+            (state.weights || [])
+
+            .slice()
+
+            .sort(
+
+                (a, b) =>
+
+                new Date(a.date)
+
+                -
+
+                new Date(b.date)
+
+            )
+
+            .slice(-12);
+
+            if (
+
+                weights.length === 0
+
+            ) {
+
+                ctx.fillStyle =
+
+                "#7c877f";
+
+                ctx.font =
+
+                "14px sans-serif";
+
+                ctx.fillText(
+
+                    "Log your first weekly weight to see your trend.",
+
+                    20,
+
+                    115
+
+                );
+
+                return;
+
+            }
+
+            const values =
+
+            weights.map(
+
+                w => w.weight
+
+            );
+
+            let min =
+
+            Math.min(...values);
+
+            let max =
+
+            Math.max(...values);
+
+            if (min === max) {
+
+                min -= 2;
+
+                max += 2;
+
+            } else {
+
+                min -= 1;
+
+                max += 1;
+
+            }
+
+            const left = 38;
+
+            const right =
+
+            width - 15;
+
+            const top = 20;
+
+            const bottom =
+
+            height - 35;
+
+            /* GRID */
+
+            ctx.strokeStyle =
+
+            "#e5ebe5";
+
+            ctx.lineWidth = 1;
+
+            for (
+
+                let i = 0;
+
+                i <= 4;
+
+                i++
+
+            ) {
+
+                const y =
+
+                top +
+
+                i *
+
+                ((bottom-top)/4);
+
+                ctx.beginPath();
+
+                ctx.moveTo(
+
+                    left,
+
+                    y
+
+                );
+
+                ctx.lineTo(
+
+                    right,
+
+                    y
+
+                );
+
+                ctx.stroke();
+
+            }
+
+            /* LABELS */
+
+            ctx.fillStyle =
+
+            "#7c877f";
+
+            ctx.font =
+
+            "10px sans-serif";
+
+            ctx.fillText(
+
+                max.toFixed(1),
+
+                3,
+
+                top + 4
+
+            );
+
+            ctx.fillText(
+
+                min.toFixed(1),
+
+                3,
+
+                bottom
+
+            );
+
+            /* LINE */
+
+            ctx.strokeStyle =
+
+            "#71947d";
+
+            ctx.lineWidth = 3;
+
+            ctx.lineJoin =
+
+            "round";
+
+            ctx.lineCap =
+
+            "round";
+
+            ctx.beginPath();
+
+            weights.forEach(
+
+                (item, index) => {
+
+                    const x =
+
+                    left +
+
+                    index *
+
+                    (
+
+                        (right-left) /
+
+                        Math.max(
+
+                            1,
+
+                            weights.length-1
+
+                        )
+
+                    );
+
+                    const y =
+
+                    bottom -
+
+                    (
+
+                        (
+
+                            item.weight -
+
+                            min
+
+                        )
+
+                        /
+
+                        (
+
+                            max -
+
+                            min
+
+                        )
+
+                    )
+
+                    *
+
+                    (bottom-top);
+
+                    if (index === 0)
+
+                        ctx.moveTo(
+
+                        x,
+
+                        y
+
+                    );
+
+                    else
+
+                        ctx.lineTo(
+
+                        x,
+
+                        y
+
+                    );
+
+                }
+
+            );
+
+            ctx.stroke();
+
+            /* POINTS */
+
+            ctx.fillStyle =
+
+            "#71947d";
+
+            weights.forEach(
+
+                (item, index) => {
+
+                    const x =
+
+                    left +
+
+                    index *
+
+                    (
+
+                        (right-left) /
+
+                        Math.max(
+
+                            1,
+
+                            weights.length-1
+
+                        )
+
+                    );
+
+                    const y =
+
+                    bottom -
+
+                    (
+
+                        (
+
+                            item.weight -
+
+                            min
+
+                        )
+
+                        /
+
+                        (
+
+                            max -
+
+                            min
+
+                        )
+
+                    )
+
+                    *
+
+                    (bottom-top);
+
+                    ctx.beginPath();
+
+                    ctx.arc(
+
+                        x,
+
+                        y,
+
+                        4,
+
+                        0,
+
+                        Math.PI*2
+
+                    );
+
+                    ctx.fill();
+
+                }
+
+            );
+
+        }
+
+        /* ======================================================
+
+   CALENDAR
+
+====================================================== */
+
+        let calendarDate =
+
+        new Date();
+
+        function changeMonth(
+
+            amount
+
+        ) {
+
+            calendarDate.setMonth(
+
+                calendarDate.getMonth()
+
+                + amount
+
+            );
+
+            renderCalendar();
+
+        }
+
+        function renderCalendar() {
+
+            const year =
+
+            calendarDate.getFullYear();
+
+            const month =
+
+            calendarDate.getMonth();
+
+            document.getElementById(
+
+                "calendarMonth"
+
+            ).textContent =
+
+            calendarDate.toLocaleDateString(
+
+                undefined,
+
+                {
+
+                    month: "long",
+
+                    year: "numeric"
+
+                }
+
+            );
+
+            const grid =
+
+            document.getElementById(
+
+                "calendarGrid"
+
+            );
+
+            grid.innerHTML = "";
+
+            const first =
+
+            new Date(
+
+                year,
+
+                month,
+
+                1
+
+            );
+
+            const last =
+
+            new Date(
+
+                year,
+
+                month + 1,
+
+                0
+
+            );
+
+            for (
+
+                let i = 0;
+
+                i < first.getDay();
+
+                i++
+
+            ) {
+
+                const empty =
+
+                document.createElement(
+
+                    "div"
+
+                );
+
+                grid.appendChild(
+
+                    empty
+
+                );
+
+            }
+
+            for (
+
+                let day = 1;
+
+                day <= last.getDate();
+
+                day++
+
+            ) {
+
+                const date =
+
+                new Date(
+
+                    year,
+
+                    month,
+
+                    day
+
+                );
+
+                const key =
+
+                dateKey(date);
+
+                const data =
+
+                state.days[key];
+
+                const cell =
+
+                document.createElement(
+
+                    "div"
+
+                );
+
+                cell.className =
+
+                "calendar-day";
+
+                if (
+
+                    key === dateKey()
+
+                ) {
+
+                    cell.classList.add(
+
+                        "today"
+
+                    );
+
+                }
+
+                if (data) {
+
+                    const score =
+
+                    calculateDayScore(
+
+                        data
+
+                    );
+
+                    if (score >= 80)
+
+                        cell.classList.add(
+
+                        "complete"
+
+                    );
+
+                    else if (score > 0)
+
+                        cell.classList.add(
+
+                        "partial"
+
+                    );
+
+                }
+
+                cell.innerHTML =
+
+                `<div>${day}</div>`;
+
+                if (data) {
+
+                    const dot =
+
+                    document.createElement(
+
+                        "div"
+
+                    );
+
+                    dot.className =
+
+                    "calendar-dot";
+
+                    cell.appendChild(
+
+                        dot
+
+                    );
+
+                }
+
+                grid.appendChild(
+
+                    cell
+
+                );
+
+            }
+
+        }
+
+        /* ======================================================
+
+   GOALS
+
+====================================================== */
+
+        function loadGoals() {
+
+            document.getElementById(
+
+                "waterGoalInput"
+
+            ).value =
+
+            state.goals.water;
+
+            document.getElementById(
+
+                "sleepGoalInput"
+
+            ).value =
+
+            state.goals.sleep;
+
+            document.getElementById(
+
+                "weighDayInput"
+
+            ).value =
+
+            state.goals.weighDay;
+
+        }
+
+        function saveGoals() {
+
+            const water =
+
+            parseFloat(
+
+                document.getElementById(
+
+                    "waterGoalInput"
+
+                ).value
+
+            );
+
+            const sleep =
+
+            parseFloat(
+
+                document.getElementById(
+
+                    "sleepGoalInput"
+
+                ).value
+
+            );
+
+            const weighDay =
+
+            parseInt(
+
+                document.getElementById(
+
+                    "weighDayInput"
+
+                ).value
+
+            );
+
+            if (!isNaN(water))
+
+                state.goals.water =
+
+            water;
+
+            if (!isNaN(sleep))
+
+                state.goals.sleep =
+
+            sleep;
+
+            state.goals.weighDay =
+
+            weighDay;
+
+            saveState();
+
+            renderToday();
+
+            showToast(
+
+                "Goals updated ✓"
+
+            );
+
+        }
+
+        function getDayName(
+
+            day
+
+        ) {
+
+            return [
+
+                "Sunday",
+
+                "Monday",
+
+                "Tuesday",
+
+                "Wednesday",
+
+                "Thursday",
+
+                "Friday",
+
+                "Saturday"
+
+            ][day];
+
+        }
+
+        /* ======================================================
+
+   EXPORT
+
+====================================================== */
+
+        function exportData() {
+
+            const data =
+
+            JSON.stringify(
+
+                state,
+
+                null,
+
+                2
+
+            );
+
+            const blob =
+
+            new Blob(
+
+                [data],
+
+                {
+
+                    type:
+
+                    "application/json"
+
+                }
+
+            );
+
+            const url =
+
+            URL.createObjectURL(
+
+                blob
+
+            );
+
+            const link =
+
+            document.createElement(
+
+                "a"
+
+            );
+
+            link.href =
+
+            url;
+
+            link.download =
+
+            "my-wellness-data.json";
+
+            link.click();
+
+            URL.revokeObjectURL(
+
+                url
+
+            );
+
+        }
+
+        /* ======================================================
+
+   RESET
+
+====================================================== */
+
+        function resetAllData() {
+
+            if (
+
+                !confirm(
+
+                    "Delete ALL wellness data? This cannot be undone."
+
+                )
+
+            )
+
+                return;
+
+            localStorage.removeItem(
+
+                STORAGE_KEY
+
+            );
+
+            location.reload();
+
+        }
+
+        /* ======================================================
+
+   NAVIGATION
+
+====================================================== */
+
+        function showView(
+
+            viewId,
+
+            button
+
+        ) {
+
+            document
+
+            .querySelectorAll(
+
+                ".view"
+
+            )
+
+            .forEach(
+
+                view =>
+
+                view.classList.remove(
+
+                    "active"
+
+                )
+
+            );
+
+            document
+
+            .getElementById(
+
+                viewId
+
+            )
+
+            .classList.add(
+
+                "active"
+
+            );
+
+            document
+
+            .querySelectorAll(
+
+                ".nav-button"
+
+            )
+
+            .forEach(
+
+                btn =>
+
+                btn.classList.remove(
+
+                    "active"
+
+                )
+
+            );
+
+            button.classList.add(
+
+                "active"
+
+            );
+
+        }
+
+        /* ======================================================
+
+   TOAST
+
+====================================================== */
+
+        let toastTimer;
+
+        function showToast(
+
+            message
+
+        ) {
+
+            const toast =
+
+            document.getElementById(
+
+                "toast"
+
+            );
+
+            toast.textContent =
+
+            message;
+
+            toast.classList.add(
+
+                "show"
+
+            );
+
+            clearTimeout(
+
+                toastTimer
+
+            );
+
+            toastTimer =
+
+            setTimeout(
+
+                () =>
+
+                toast.classList.remove(
+
+                    "show"
+
+                ),
+
+                1500
+
+            );
+
+        }
+
+        /* ======================================================
+
+   START APP
+
+====================================================== */
+
+        renderToday();
+
+        window.addEventListener(
+
+            "resize",
+
+            () => {
+
+                if (
+
+                    document
+
+                    .getElementById(
+
+                        "progressView"
+
+                    )
+
+                    .classList.contains(
+
+                        "active"
+
+                    )
+
+                ) {
+
+                    drawWeightChart();
+
+                }
+
+            }
+
+        );
+
+    </script>
+
+</body>
+
+</html>
